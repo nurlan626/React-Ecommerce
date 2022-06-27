@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import _ from "lodash";
-import isEqual from "lodash/isEqual";
 
 const initialStateValue = [];
 
@@ -9,19 +7,24 @@ export const userSlice = createSlice({
   initialState: initialStateValue,
   reducers: {
     addToCart: (state, action) => {
-      let i = 0;
-      state.forEach(function (post) {
-        if (isEqual(post, action.payload)) {
-          i++;
+      const exist = state.find((x) => x.id === action.payload.id);
+      if (!exist) {
+        const item = action.payload;
+        item.qty = 1;
+        state = state.push(item);
+      }
+    },
+    increaseQuantity: (state, action) => {
+      state.forEach(function (item) {
+        if (item.id === action.payload.id) {
+          item.qty = item.qty + 1;
         }
       });
-      if (i === 0) {
-        state = state.push(action.payload);
-      }
+      console.log(state)
     },
   },
 });
 
-export const { addToCart } = userSlice.actions;
+export const { addToCart, increaseQuantity } = userSlice.actions;
 
 export default userSlice.reducer;

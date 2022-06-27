@@ -50,7 +50,7 @@ const PostDetails = () => {
         <nav className="nestedNav">
         <MyButton onClick={() => navigate(`post-comment/${post.id}`)}>comments</MyButton>
         <MyButton onClick={() => navigate(`post-userId/${post.userId}`)}>User information</MyButton>
-        {user && (<button onClick={() => dispatch(addToCart(post))}>add to cart</button>)}
+        {user && (<MyButton onClick={() => dispatch(addToCart(post))}>add to cart</MyButton>)}
         
       </nav>
       <Outlet />
