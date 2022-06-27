@@ -1,0 +1,35 @@
+.PostsList {
+  background-color: red;
+  display: flex;
+  flex-wrap: wrap;
+}
+.post {
+  display: flex;
+  padding: 25px;
+  border: 1px solid rgb(168, 168, 242);
+  border-radius: 10px;
+  align-items: center;
+  margin: 10px;
+  margin-top: 15px;
+  justify-content: space-between;
+  
+  width: 300px;
+}
+.post__content {
+  text-align: left;
+}
+
+.post-enter {
+  opacity: 0;
+}
+.post-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.post-exit {
+  opacity: 1;
+}
+.post-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
