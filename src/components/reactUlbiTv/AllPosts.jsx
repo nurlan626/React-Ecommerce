@@ -30,7 +30,6 @@ const AllPosts = () => {
     setPosts(response.data);
     const totalPosts = response.headers["x-total-count"];
     setTotalPages(getPageCount(totalPosts, limit));
-    console.log(totalPages);
   });
 
   const sortedAndSearchedPosts = usePosts(

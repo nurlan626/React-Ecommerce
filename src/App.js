@@ -14,6 +14,7 @@ import Profile from "./components/reactUlbiTv/Profile";
 import { AuthProvider } from "./components/context/auth";
 import Login from "./components/reactUlbiTv/Login";
 import PrivateRoutes from "./HOC/PrivateRoutes";
+import Cart from "./components/reactUlbiTv/Cart";
 
 function App() {
   return (
@@ -42,6 +43,8 @@ function App() {
               <Route path="profile" element={<PrivateRoutes><Profile /></PrivateRoutes>} />
               
               <Route path="login" element={<Login />} />
+              <Route path="cart" element={<PrivateRoutes><Cart /></PrivateRoutes>} />
+
 
               <Route path="*" element={<Home />} />
             </Routes>

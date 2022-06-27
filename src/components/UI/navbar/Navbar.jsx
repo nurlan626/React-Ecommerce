@@ -33,6 +33,11 @@ const Navbar = () => {
           Login
         </NavLink>
       )}
+      {auth.user && (
+        <NavLink to="cart" className="Link">
+          Cart
+        </NavLink>
+      )}
       <div to="#" className="user">
         {auth.user && (
           <div>
@@ -41,7 +46,6 @@ const Navbar = () => {
         )}
       </div>
       <span></span>
-      {console.log(auth)}
     </nav>
   );
 };

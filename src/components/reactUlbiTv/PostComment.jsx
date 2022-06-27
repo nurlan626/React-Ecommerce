@@ -44,7 +44,6 @@ const PostComment = () => {
           </div>
         </div>
       )}
-      {console.log("swe")}
     </div>
   );
 };
