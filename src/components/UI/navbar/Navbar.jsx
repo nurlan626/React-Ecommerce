@@ -1,15 +1,20 @@
 import React from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { logout } from "../../../redux/user";
 import "./Navbar.css";
 
+
 const Navbar = () => {
-  const auth = useAuth();
   const navigate = useNavigate();
+  const user = useSelector(state => state.user.value)
+  const dispatch = useDispatch()
+  const cartLenght = useSelector(state => state.cart)
 
   const handleLogout = () => {
-    auth.logout();
+    dispatch(logout())
     navigate("/");
+
   };
   return (
     <nav className="navigation">
@@ -22,26 +27,26 @@ const Navbar = () => {
       <NavLink to="allPosts" className="Link">
         All Posts
       </NavLink>
-      {auth.user && (
+      {user && (
         <NavLink to="profile" className="Link">
           Profile
         </NavLink>
       )}
 
-      {!auth.user && (
+      {!user&& (
         <NavLink to="login" className="Link">
           Login
         </NavLink>
       )}
-      {auth.user && (
+      {user && (
         <NavLink to="cart" className="Link">
-          Cart
+          Cart ({cartLenght.length})
         </NavLink>
       )}
       <div to="#" className="user">
-        {auth.user && (
+        {user && (
           <div>
-            {auth.user} <button onClick={handleLogout}>Logout</button>
+            {user.name} <button onClick={handleLogout}>Logout</button>
           </div>
         )}
       </div>

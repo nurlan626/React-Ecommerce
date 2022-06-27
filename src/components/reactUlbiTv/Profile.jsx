@@ -1,18 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/auth";
 
 const Profile = () => {
-  const auth = useAuth();
+  const user = useSelector(state => state.user.value)
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    auth.logout();
     navigate("/", { replace: true });
   };
   return (
     <>
-      <div>welcome {auth.user}</div>
+      <div>welcome {user.name}</div>
       <button onClick={handleLogout}>Log out</button>
     </>
   );

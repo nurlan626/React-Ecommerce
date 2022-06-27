@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import _ from "lodash";
+import isEqual from "lodash/isEqual";
 
 const initialStateValue = [];
 
@@ -7,7 +9,15 @@ export const userSlice = createSlice({
   initialState: initialStateValue,
   reducers: {
     addToCart: (state, action) => {
-      state = state.push(action.payload);
+      let i = 0;
+      state.forEach(function (post) {
+        if (isEqual(post, action.payload)) {
+          i++;
+        }
+      });
+      if (i === 0) {
+        state = state.push(action.payload);
+      }
     },
   },
 });

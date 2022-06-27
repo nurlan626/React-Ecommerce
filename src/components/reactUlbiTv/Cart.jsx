@@ -9,7 +9,7 @@ const Cart = () => {
       <div>cart</div>
       <div>
         {cart.map((post) => {
-          return <div key={post.id}>{post.title}</div>;
+          return <div key={new Date().getMilliseconds()}>{post.title}</div>;
         })}
       </div>
     </>

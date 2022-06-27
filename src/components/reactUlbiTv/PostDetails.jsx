@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 import PostService from "../../API/PostService";
 import { useFetch } from "../../hooks/useFetch";
@@ -17,7 +17,7 @@ const PostDetails = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(false);
-  const auth = useAuth();
+  const user = useSelector(state => state.user.value)
 
 
   const fetchPost = async () => {
@@ -50,7 +50,7 @@ const PostDetails = () => {
         <nav className="nestedNav">
         <MyButton onClick={() => navigate(`post-comment/${post.id}`)}>comments</MyButton>
         <MyButton onClick={() => navigate(`post-userId/${post.userId}`)}>User information</MyButton>
-        {auth.user && (<MyButton onClick={() => dispatch(addToCart(post))}>add to cart</MyButton>)}
+        {user && (<button onClick={() => dispatch(addToCart(post))}>add to cart</button>)}
         
       </nav>
       <Outlet />
