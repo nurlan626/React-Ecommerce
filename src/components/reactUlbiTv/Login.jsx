@@ -7,7 +7,7 @@ const Login = () => {
   const [user, setUser] = useState("");
   const auth = useAuth();
   const location = useLocation();
-  const redirectPath = location.state?.path || "/"
+  const redirectPath = location.state?.path || "/";
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -16,14 +16,28 @@ const Login = () => {
   };
   return (
     <div>
-      <form action="">
-        <input
-          type="text"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-        />
-        <input type="submit" onClick={handleLogin} />
-      </form>
+      <div> Context
+        <form action="">
+          <input
+            type="text"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+          />
+          <input type="submit" onClick={handleLogin} />
+        </form>
+      </div>
+      {/* <div>
+        Redux
+        <form action="">
+          <input
+            type="text"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+          />
+          <input type="submit" onClick={handleLogin} />
+        </form>
+
+      </div> */}
     </div>
   );
 };

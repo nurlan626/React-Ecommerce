@@ -40,12 +40,23 @@ function App() {
                 <Route path="post-comment/:id" element={<PostComment />} />
                 <Route path="post-userId/:id" element={<PostUserId />} />
               </Route>
-              <Route path="profile" element={<PrivateRoutes><Profile /></PrivateRoutes>} />
-              
+              <Route
+                path="profile"
+                element={
+                  <PrivateRoutes>
+                    <Profile />
+                  </PrivateRoutes>
+                }
+              />
               <Route path="login" element={<Login />} />
-              <Route path="cart" element={<PrivateRoutes><Cart /></PrivateRoutes>} />
-
-
+              <Route
+                path="cart"
+                element={
+                  <PrivateRoutes>
+                    <Cart />
+                  </PrivateRoutes>
+                }
+              />
               <Route path="*" element={<Home />} />
             </Routes>
           </BrowserRouter>

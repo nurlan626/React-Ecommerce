@@ -8,6 +8,7 @@ import { useFetch } from "../../hooks/useFetch";
 import MyButton from "../UI/button/MyButton";
 import Loader from "../UI/loader/Loader";
 import {addToCart} from '../../redux/cartReducer'
+import { useAuth } from "../context/auth";
 
 const PostDetails = () => {
   const navigate = useNavigate();
@@ -16,6 +17,8 @@ const PostDetails = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(false);
+  const auth = useAuth();
+
 
   const fetchPost = async () => {
     try {
@@ -47,7 +50,8 @@ const PostDetails = () => {
         <nav className="nestedNav">
         <MyButton onClick={() => navigate(`post-comment/${post.id}`)}>comments</MyButton>
         <MyButton onClick={() => navigate(`post-userId/${post.userId}`)}>User information</MyButton>
-        <MyButton onClick={() => dispatch(addToCart(post))}>add to cart</MyButton>
+        {auth.user && (<MyButton onClick={() => dispatch(addToCart(post))}>add to cart</MyButton>)}
+        
       </nav>
       <Outlet />
     </div>
